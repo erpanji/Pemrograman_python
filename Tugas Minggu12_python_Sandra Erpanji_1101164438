@@ -1,0 +1,254 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled2.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyNOVTqKruAuJ6Kf0YsJWaXb",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/erpanji/Pemrograman_python/blob/main/Tugas%20Minggu12_python_Sandra%20Erpanji_1101164438\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ukM6H_mpDtgO"
+      },
+      "source": [
+        "import numpy as np"
+      ],
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "iQMnclrvOHPb"
+      },
+      "source": [
+        "#tinggi antenna penerima\r\n",
+        "hr = 20"
+      ],
+      "execution_count": 33,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_vOWXKpEF7qk",
+        "outputId": "1e5f6774-86c5-486b-f014-ff53fa3ceda1"
+      },
+      "source": [
+        "a=(1.1*np.log(1000)-0.7)*20-(1.56*np.log(1000)-0.8)\r\n",
+        "print(a)"
+      ],
+      "execution_count": 36,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "127.99451790239488\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "S_nFKUbEKAsC"
+      },
+      "source": [
+        "#Urban\r\n",
+        "Cm = 0"
+      ],
+      "execution_count": 25,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1ZCGX5PqN7G7"
+      },
+      "source": [
+        "#tinggi antenna\r\n",
+        "Ht = 90"
+      ],
+      "execution_count": 37,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "W9HyNcX4NVWa"
+      },
+      "source": [
+        "#Frekuensi dalam Fc\r\n",
+        "Fc = 1000"
+      ],
+      "execution_count": 32,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "T2glSWxOQQB6"
+      },
+      "source": [
+        "#Frekuensi \r\n",
+        "F = 500"
+      ],
+      "execution_count": 43,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "tgjZmD52KpaR"
+      },
+      "source": [
+        "#Suburban\r\n",
+        "Cms = -2*(np.log(1000/28))**2-5.4"
+      ],
+      "execution_count": 30,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3P6fBy2ULitz"
+      },
+      "source": [
+        "#Jarak\r\n",
+        "d = 2"
+      ],
+      "execution_count": 31,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "avM1WlULMfwa",
+        "outputId": "90174126-ea82-4af5-8d21-53754f0f8aa0"
+      },
+      "source": [
+        "PL = 46.3 + 33.9*np.log(Fc) - 13.83*np.log (Ht) + (44.9 - 6.55*np.log(Ht))*np.log(d) + Cms\r\n",
+        "print(PL)"
+      ],
+      "execution_count": 40,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "197.96406899473675\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "O4Ltx0RbRFcT"
+      },
+      "source": [
+        "Ntl = lambda x: 10*np.log10(x)"
+      ],
+      "execution_count": 47,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UpaOOX_TRTTh",
+        "outputId": "a393bc35-ef72-4834-dd74-bc64cd297689"
+      },
+      "source": [
+        "z=Ntl(197.96406899473675)\r\n",
+        "print(z)"
+      ],
+      "execution_count": 48,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "22.965863718101623\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-Okx0_YaPVz7",
+        "outputId": "f8abe8cc-dd5d-484a-b8ae-e905de65b8fa"
+      },
+      "source": [
+        "PL = 46.3 + 33.9*np.log(Fc) - 13.83*np.log (Ht) + (44.9 - 6.55*np.log(Ht))*np.log(d) + Cm\r\n",
+        "print(PL)"
+      ],
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "197.96406899473675\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6itmcn9eRejs",
+        "outputId": "34412468-4235-467d-9f88-b956ec1b3eb0"
+      },
+      "source": [
+        "z=Ntl(PL)\r\n",
+        "print(z)"
+      ],
+      "execution_count": 49,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "22.965863718101623\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    }
+  ]
+}
